@@ -4,23 +4,35 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getTodoByID } from '../redux/modules/todo';
 
+
 const Detail = () => {
   const dispatch = useDispatch();
-  const todo = useSelector((state) => state.todos.todo);
+  const todo = useSelector((state) => state.todos.todos);
+  console.log(todo);
 
-  const { id } = useParams();
+  const { index } = useParams();
+  console.log(index);
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getTodoByID(id));
-  }, [dispatch, id]);
+    dispatch(getTodoByID(index));
+  }, [dispatch, index]);
+
+
+
 
   return (
     <StContainer>
       <StDialog>
         <div>
           <StDialogHeader>
-            <div>ID :{todo.id}</div>
+            <div>
+
+              ID :{todo[parseInt(index - 1)].id}
+
+
+            </div>
             <StButton
               borderColor="#ddd"
               onClick={() => {
@@ -30,8 +42,8 @@ const Detail = () => {
               이전으로
             </StButton>
           </StDialogHeader>
-          <StTitle>{todo.title}</StTitle>
-          <StBody>{todo.body}</StBody>
+          <StTitle>{todo[parseInt(index - 1)].title}</StTitle>
+          <StBody>{todo[parseInt(index - 1)].body}</StBody>
         </div>
       </StDialog>
     </StContainer>

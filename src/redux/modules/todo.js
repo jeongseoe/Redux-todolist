@@ -35,23 +35,26 @@ export const getTodoByID = (payload) => {
 const initialState = {
     todos: [
         {
-            id: "1",
+            id: 0,
             title: "리액트",
             body: "리액트를 배워봅시다",
             isDone: false,
         },
+        {
+            id: 1,
+            title: "리액트",
+            body: "리액트 기초를 배웁시다",
+            isDone: false,
+        },
     ],
-    todo: {
-        id: "0",
-        title: "",
-        body: "",
-        isDone: false,
-    },
+
 };
+
 
 const todos = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TODO:
+
             return {
                 ...state,
                 todos: [...state.todos, action.payload],
@@ -79,11 +82,20 @@ const todos = (state = initialState, action) => {
             };
 
         case GET_TODO_BY_ID:
+            console.log(state);
+            console.log(
+                state.todos.find((todo) => {
+                    return todo.id === action.payload;
+                })
+            );
             return {
                 ...state,
                 todo: state.todos.find((todo) => {
+
                     return todo.id === action.payload;
+
                 }),
+
             };
         default:
             return state;
