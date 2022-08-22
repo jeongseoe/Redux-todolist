@@ -1,8 +1,14 @@
 import React from "react";
-import "./style.css";
+import styled from "styled-components";
 
-const Layout = (props) => {
-    return <div className="layout">{props.children}</div>;
+const Layout = ({ children }) => {
+    return <StAddDiv>{children}</StAddDiv>;
 };
 
 export default Layout;
+
+const StAddDiv = styled.div`
+    max-width: 1200px;
+    min-width: 800px;
+    margin: 0 auto;    
+`;

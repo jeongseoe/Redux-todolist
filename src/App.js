@@ -1,7 +1,8 @@
-import TodoList from './pages/TodoList.jsx';
+import React from "react";
+import Router from "./shared/Router";
 
 function App() {
-    return <TodoList />;
+    return <Router />;
 }
 
 export default App;
